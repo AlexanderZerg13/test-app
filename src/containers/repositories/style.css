@@ -1,9 +1,13 @@
 .Repositories {
-
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 16px;
 }
 
 .Repositories__Search {
-
+  margin-bottom: 16px;
+  font-weight: bold;
 }
 
 .Repositories__List {
@@ -14,17 +18,36 @@
 
 }
 
+.Search__row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.Search__input {
+  
+}
+
 .Item {
   display: flex;
   flex-direction: column;
-  height: 40px;
+  margin-bottom: 6px;
 }
 
 .Item__row {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.Item__name {
+  font-weight: bold;
 }
 
 .Item__description {
+}
 
+.Item__license {
+  font-style: italic;
+  align-self: flex-end;
 }

@@ -10,11 +10,16 @@ class Repositories extends Component {
   };
 
   state = {
-    search : '',
+    search: '',
+    license: '',
   };
 
   handleChangeSearch = event => {
     this.setState({search: event.target.value});
+  }
+
+  handleChangeLicense = event => {
+    this.setState({license: event.target.value});
   }
 
   renderRepository = (item, index) => {
@@ -25,27 +30,47 @@ class Repositories extends Component {
           <div className="Item__star">{`Звезд: ${item.stargazers_count}`}</div>
         </div>
         <div className="Item__description">{item.description}</div>
+        <div className="Item__license">{(item.license || {}).name}</div>
       </div>
     );
   }
 
   render() {
-    const { search } = this.state;
+    const { search, license } = this.state;
     const { fetching, items } = this.props;
 
     const preparedItems = items
-      .filter(item => (item.name || "").includes(search) || (item.description || "").includes(search));
+      .filter(item => (item.name || "").includes(search) || (item.description || "").includes(search))
+      .filter(item => ((item.license || {}).name || "").includes(license))
 
     return (
       <div className="Repositories">
-        <input
-          className="Repositories__Search"
-          value={search}
-          onChange={this.handleChangeSearch}
-        />
+        <div className="Repositories__Search">
+          <div className="Search__row">
+            Поиск:
+            <input
+              className="Search__input"
+              value={search}
+              onChange={this.handleChangeSearch}
+            />
+          </div>
+          <div className="Search__row">
+            Лицензия:
+            <input
+              className="Search__input"
+              value={license}
+              onChange={this.handleChangeLicense}
+            />
+          </div>
+        </div>
         {fetching && (
           <div className="Repositories__Info">
             Загрузка...
+          </div>
+        )}
+        {!fetching && preparedItems.length === 0 && (
+          <div className="Repositories__Info">
+            Данных нет
           </div>
         )}
         {!fetching && (
