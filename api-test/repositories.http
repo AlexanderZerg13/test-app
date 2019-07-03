@@ -1,0 +1,5 @@
+@baseUrl = https://api.github.com
+
+###
+# Получение репозиториев созданных за последний месяц на языке JavaScript, отсортированных по популярности
+GET {{baseUrl}}/search/repositories?q=language:javascript+created:>2019-07-01&sort=stars
