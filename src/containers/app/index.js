@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
+import Repositories from '../repositories';
 import './style.css';
 
 class App extends Component {
@@ -21,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Blabla
+        <Repositories />
       </div>
     );
   }

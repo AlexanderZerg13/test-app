@@ -1,0 +1,30 @@
+.Repositories {
+
+}
+
+.Repositories__Search {
+
+}
+
+.Repositories__List {
+
+}
+
+.Repositories__Info {
+
+}
+
+.Item {
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+}
+
+.Item__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.Item__description {
+
+}
