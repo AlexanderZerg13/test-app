@@ -6,21 +6,4 @@ const http = axios.create({
   headers: {},
 });
 
-http.init = () => {};
-
-http.interceptors.request.use(
-  config => {
-    const token = localStorage.getItem('token');
-
-    const newConfig = config;
-
-    if (token) {
-      newConfig.headers.Authorization = `Bearer ${token}`;
-    }
-
-    return newConfig;
-  },
-  err => Promise.reject(err),
-);
-
 export default http;
